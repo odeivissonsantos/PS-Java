@@ -1,9 +1,14 @@
 package br.com.supera.gamestore.dtos;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+@RequiredArgsConstructor
+@Data
 public class ProdutoDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -23,4 +28,11 @@ public class ProdutoDTO implements Serializable {
     @NotNull(message = "Campo URL DA IMAGEM é Obrigatório")
     private String urlImagem;
 
+    public ProdutoDTO(ProdutoDTO obj) {
+        this.id = obj.getId();
+        this.nome = obj.getNome();
+        this.preco = obj.getPreco();
+        this.pontuacao = obj.getPontuacao();
+        this.urlImagem = obj.getUrlImagem();
+    }
 }
