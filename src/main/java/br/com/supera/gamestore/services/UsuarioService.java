@@ -57,9 +57,6 @@ public class UsuarioService {
         newObj.setTelefone(obj.getTelefone());
     }
 
-
-
-
     /*
     verifica existe Usuario na base de dados passando por parâmetro um id,
     caso contrario é lançado uma excessão
