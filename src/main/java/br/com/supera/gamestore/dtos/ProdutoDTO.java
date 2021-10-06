@@ -1,5 +1,6 @@
 package br.com.supera.gamestore.dtos;
 
+import br.com.supera.gamestore.models.Produto;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -27,11 +28,12 @@ public class ProdutoDTO implements Serializable {
     @NotNull(message = "Campo URL DA IMAGEM é Obrigatório")
     private String urlImagem;
 
-    public ProdutoDTO(ProdutoDTO obj) {
+    public ProdutoDTO(Produto obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.preco = obj.getPreco();
         this.pontuacao = obj.getPontuacao();
         this.urlImagem = obj.getUrlImagem();
     }
+
 }

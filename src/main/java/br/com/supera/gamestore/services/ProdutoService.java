@@ -28,7 +28,7 @@ public class ProdutoService {
     }
 
     //Salva um novo Produto na base de dados
-    public Produto criarUsuario(Produto obj) {
+    public Produto criarProduto(Produto obj) {
         obj.setId(null);
         obj = produtoDAO.save(obj);
         return obj;
