@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @RequiredArgsConstructor
@@ -24,4 +25,7 @@ public class ItemCarrinho implements Serializable {
 
     @Column(name = "preco")
     private BigDecimal preco;
+
+    @ManyToOne
+    private Produto produto;
 }

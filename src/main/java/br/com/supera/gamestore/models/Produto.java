@@ -32,4 +32,7 @@ public class Produto implements Serializable {
    @Column(name = "imagem")
    private String urlImagem;
 
+   @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
+   private ItemCarrinho itemCarrinho;
+
 }
