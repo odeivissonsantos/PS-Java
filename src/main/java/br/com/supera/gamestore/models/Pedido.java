@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 @RequiredArgsConstructor
 @Table(name = "carrinho")
-public class Carrinho implements Serializable {
+public class Pedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,5 +22,8 @@ public class Carrinho implements Serializable {
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataPedido;
+
+    @ManyToOne
+    private Usuario usuario;
 
 }
