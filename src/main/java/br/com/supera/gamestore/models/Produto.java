@@ -20,16 +20,16 @@ public class Produto implements Serializable {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
-   @Column
+   @Column(name = "nome", unique = true)
    private String nome;
 
-   @Column
+   @Column(name = "preco")
    private BigDecimal preco;
 
-   @Column
+   @Column(name = "pontuacao")
    private Integer pontuacao;
 
-   @Column
+   @Column(name = "imagem")
    private String urlImagem;
 
 }
