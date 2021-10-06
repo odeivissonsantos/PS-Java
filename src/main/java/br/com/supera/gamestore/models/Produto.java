@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Table(name = "produto")
 @Data
 @RequiredArgsConstructor
-class Produto implements Serializable {
+public class Produto implements Serializable {
 
    private static final long serialVersionUID = 1L;
 
