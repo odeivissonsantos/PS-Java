@@ -13,7 +13,6 @@ public class ProdutoDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
     private Long id;
 
     @NotNull(message = "Campo NOME é Obrigatório")
