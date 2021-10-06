@@ -1,12 +1,16 @@
 package br.com.supera.gamestore.models;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+@Data
+@RequiredArgsConstructor
+@Entity
+@Table
 public class ItemCarrinho implements Serializable {
 
     private static final long serialVersionUID = 1L;
