@@ -40,6 +40,7 @@ public class UsuarioService {
         return usuarioDAO.save(newObj);
     }
 
+    //Verifica se existe um usuário na base de dados e deleta.
     public void deletarUsuario(Long id) {
         verificaSeExisteUsuario(id);
         usuarioDAO.deleteById(id);
