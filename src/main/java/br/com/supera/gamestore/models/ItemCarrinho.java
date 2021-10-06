@@ -28,4 +28,7 @@ public class ItemCarrinho implements Serializable {
 
     @ManyToOne
     private Produto produto;
+
+    @ManyToOne
+    private Pedido pedido;
 }

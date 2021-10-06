@@ -1,12 +1,14 @@
 package br.com.supera.gamestore.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,5 +27,9 @@ public class Pedido implements Serializable {
 
     @ManyToOne
     private Usuario usuario;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    private List<ItemCarrinho> itens;
 
 }

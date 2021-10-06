@@ -1,5 +1,6 @@
 package br.com.supera.gamestore.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -32,6 +33,7 @@ public class Produto implements Serializable {
    @Column(name = "imagem")
    private String urlImagem;
 
+   @JsonIgnore
    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
    private ItemCarrinho itemCarrinho;
 
