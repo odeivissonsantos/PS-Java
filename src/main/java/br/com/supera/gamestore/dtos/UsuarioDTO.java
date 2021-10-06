@@ -17,14 +17,14 @@ public class UsuarioDTO implements Serializable {
 
     private Long id;
 
-    @NotNull(message = "Campo TELEFONE é obrigatório")
+    @NotNull(message = "Campo NOME COMPLETO é obrigatório")
     private String nomeCompleto;
 
-    @NotNull(message = "Campo TELEFONE é obrigatório")
+    @NotNull(message = "Campo EMAIL é obrigatório")
     @Email(message = "Digite um email válido!")
     private String email;
 
-    @NotNull(message = "Campo TELEFONE é obrigatório")
+    @NotNull(message = "Campo CPF é obrigatório")
     @CPF(message = "Digite um CPF válido!")
     private String cpf;
 
