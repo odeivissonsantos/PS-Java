@@ -1,6 +1,7 @@
 package br.com.supera.gamestore.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -33,6 +34,7 @@ public class Usuario implements Serializable {
     private String telefone;
 
     @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Pedido> pedidos;
 }

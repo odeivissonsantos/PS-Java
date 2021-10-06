@@ -1,19 +1,22 @@
 package br.com.supera.gamestore.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Data
 @RequiredArgsConstructor
-@Table(name = "carrinho")
+@Table(name = "pedido")
 public class Pedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,10 +29,14 @@ public class Pedido implements Serializable {
     private LocalDate dataPedido;
 
     @ManyToOne
+    @JsonBackReference
     private Usuario usuario;
 
     @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemCarrinho> itens;
+
+    private BigDecimal frete;
 
 }

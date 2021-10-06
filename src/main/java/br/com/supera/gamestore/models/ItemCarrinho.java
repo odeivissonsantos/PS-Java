@@ -1,5 +1,8 @@
 package br.com.supera.gamestore.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -11,7 +14,7 @@ import java.util.List;
 @Data
 @RequiredArgsConstructor
 @Entity
-@Table
+@Table(name = "item_carrinho")
 public class ItemCarrinho implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,9 +29,12 @@ public class ItemCarrinho implements Serializable {
     @Column(name = "preco")
     private BigDecimal preco;
 
-    @ManyToOne
-    private Produto produto;
+    @JsonIgnore
+    @JsonManagedReference
+    @OneToMany(mappedBy = "itemCarrinho", cascade = CascadeType.ALL)
+    private List<Produto> produto;
 
     @ManyToOne
+    @JsonBackReference
     private Pedido pedido;
 }
