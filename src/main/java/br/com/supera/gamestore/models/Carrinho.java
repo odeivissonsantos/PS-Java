@@ -1,7 +1,6 @@
 package br.com.supera.gamestore.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
@@ -10,14 +9,13 @@ import lombok.RequiredArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 
-@Entity
 @Data
 @RequiredArgsConstructor
-@Table(name = "pedido")
-public class Pedido implements Serializable {
+@Entity
+@Table(name = "item_carrinho")
+public class Carrinho implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,17 +23,19 @@ public class Pedido implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataPedido;
+    @Column(name = "quantidade")
+    private Integer quantidade;
 
-    @ManyToOne
-    @JsonBackReference
-    private Usuario usuario;
+    @Column(name = "valor_unitario")
+    private BigDecimal valorUnitario;
+
+    @Column(name = "valor_total")
+    private BigDecimal valorTotal;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "pedido")
-    private Carrinho carrinho;
+    @OneToMany(mappedBy = "carrinho", cascade = CascadeType.REMOVE)
+    private List<ItemCarrinho> itensCarrinho;
 
-    private BigDecimal frete;
-
+    @OneToOne
+    private Pedido pedido;
 }

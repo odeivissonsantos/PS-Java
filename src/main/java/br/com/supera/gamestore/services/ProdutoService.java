@@ -22,7 +22,7 @@ public class ProdutoService {
 
     //Retorna uma lista de todos os produtos cadastrados na base de dados
     public List<Produto> listarTodosProdutos() {
-        return produtoDAO.findAll();
+        return (List<Produto>) produtoDAO.findAll();
     }
 
     //Busca um produto passando por parâmetro um id.
@@ -69,7 +69,7 @@ public class ProdutoService {
      */
     private Produto verificaSeExisteProduto(Long id) throws ObjectNotFoundException {
         return produtoDAO.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException("Produto com "+ id +" não encontrado, Tipo: " + Usuario.class.getName()));
+                .orElseThrow(() -> new ObjectNotFoundException("Produto com "+ id +" não encontrado, Tipo: " + Produto.class.getName()));
     }
 
 }

@@ -2,11 +2,13 @@ package br.com.supera.gamestore.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -34,9 +36,9 @@ public class Produto implements Serializable {
    @Column(name = "imagem")
    private String urlImagem;
 
-   @ManyToOne
-   @JsonBackReference
-   private ItemCarrinho itemCarrinho;
+   @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
+   @JsonIgnore
+   private List<ItemCarrinho> itemCarrinho;
 
    @Override
    public String toString() {
