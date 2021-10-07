@@ -4,6 +4,7 @@ import br.com.supera.gamestore.dao.ProdutoDAO;
 import br.com.supera.gamestore.exceptions.ObjectNotFoundException;
 import br.com.supera.gamestore.models.Produto;
 import br.com.supera.gamestore.models.Usuario;
+import br.com.supera.gamestore.util.BigDecimalConverter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.List;
 public class ProdutoService {
 
     private final ProdutoDAO produtoDAO;
+    private final BigDecimalConverter bigDecimalConverter;
 
-    public ProdutoService(ProdutoDAO produtoDAO) {
+    public ProdutoService(ProdutoDAO produtoDAO, BigDecimalConverter bigDecimalConverter) {
         this.produtoDAO = produtoDAO;
+        this.bigDecimalConverter = bigDecimalConverter;
     }
 
     //Retorna uma lista de todos os produtos cadastrados na base de dados
@@ -29,7 +32,9 @@ public class ProdutoService {
 
     //Salva um novo Produto na base de dados
     public Produto criarProduto(Produto obj) {
+
         obj.setId(null);
+        obj.setPreco(bigDecimalConverter.converter(obj.getPreco().toString()));
         obj = produtoDAO.save(obj);
         return obj;
     }

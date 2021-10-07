@@ -1,8 +1,7 @@
 package br.com.supera.gamestore.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -39,4 +38,15 @@ public class Produto implements Serializable {
    @JsonBackReference
    private ItemCarrinho itemCarrinho;
 
+   @Override
+   public String toString() {
+      return "Produto{" +
+              "id=" + id +
+              ", nome='" + nome + '\'' +
+              ", preco=" + preco +
+              ", pontuacao=" + pontuacao +
+              ", urlImagem='" + urlImagem + '\'' +
+              ", itemCarrinho=" + itemCarrinho +
+              '}';
+   }
 }
