@@ -36,5 +36,5 @@ public class Usuario implements Serializable {
     @JsonIgnore
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Pedido> pedidos;
+    private List<Carrinho> carrinho;
 }

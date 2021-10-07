@@ -34,32 +34,6 @@ public class PedidoService {
         return pedidoDAO.findAll();
     }
 
-    public Pedido criarPedido(Pedido obj) {
-        Double freteFixo = 10.0;
-        obj.setId(null);
-        obj.setDataPedido(LocalDate.now());
-        obj.setUsuario(usuarioService.buscarUsuarioPorId(obj.getUsuario().getId()));
-
-        obj = pedidoDAO.save(obj);
-
-        for (Carrinho ic : obj.getItens()) {
-           // ic.setProduto(produtoService.buscarProdutoPorId(ic.getProduto().getId()));
-           // ic.setPreco(ic.getProduto().getPreco());
-            //ic.setQuantidade(ic.getQuantidade().getQuantidade());
-
-            if(ic.getQuantidade() % 1 == 0) {
-                obj.setFrete(BigDecimal.valueOf((ic.getQuantidade() * freteFixo)));
-            }
-        }
-
-
-
-        itemCarrinhoDAO.saveAll(obj.getItens());
-
-
-
-        return obj;
-    }
 
     /*
         verifica existe um Pedido na base de dados passando por parâmetro um id,

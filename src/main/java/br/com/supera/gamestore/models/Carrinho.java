@@ -14,28 +14,28 @@ import java.util.List;
 @Data
 @RequiredArgsConstructor
 @Entity
-@Table(name = "item_carrinho")
+@Table(name = "carrinho")
 public class Carrinho implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "quantidade")
-    private Integer quantidade;
-
-    @Column(name = "valor_unitario")
-    private BigDecimal valorUnitario;
-
-    @Column(name = "valor_total")
-    private BigDecimal valorTotal;
+    private Long carrinhoId;
 
     @JsonIgnore
     @OneToMany(mappedBy = "carrinho", cascade = CascadeType.REMOVE)
     private List<ItemCarrinho> itensCarrinho;
 
+    @ManyToOne
+    @JsonIgnore
+    private Usuario usuario;
+
+    @Column(name = "sub_total")
+    private BigDecimal subTotal;
+
     @OneToOne
+    @JsonIgnore
     private Pedido pedido;
+
 }

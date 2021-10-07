@@ -28,12 +28,8 @@ public class Pedido implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataPedido;
 
-    @ManyToOne
-    @JsonBackReference
-    private Usuario usuario;
-
+    @OneToOne
     @JsonIgnore
-    @OneToOne(mappedBy = "pedido")
     private Carrinho carrinho;
 
     private BigDecimal frete;
