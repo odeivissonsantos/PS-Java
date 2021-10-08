@@ -7,6 +7,8 @@ import br.com.supera.gamestore.models.Carrinho;
 import br.com.supera.gamestore.models.Produto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class CarrinhoService {
@@ -20,6 +22,11 @@ public class CarrinhoService {
     //Busca um carrinho passando por parâmetro um id.
     public Carrinho buscarCarrinhoPorId(Long carrinhoId) {
         return verificaSeExisteCarrinho(carrinhoId);
+    }
+
+    // Busca todas os carrinhos
+    public List<Carrinho> listarTodosCarrinhos() {
+        return carrinhoDAO.findAll();
     }
 
     /*
