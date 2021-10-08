@@ -41,6 +41,10 @@ Levaremos em conta os seguintes critérios:
 
 ## Entrega do Projeto
 
+### Porque utilizei o Spring Boot:
+- Poderia ter utilizado o Quarkus, por ser mais rápido, ter vantagens de microsserviços com deploy na cloud, uma curva de aprendizado mais rápido para desenvolvedores Java, 
+só que, eu só fiz um microsserviço até o momento com o Quarkus e na minha stack atualmente tenho maior domínio no Spring Boot.
+
 ### Objetivos do Projeto
 - Usuário: Cadastrar, Editar, Excluir, Listar e Buscar por ID [X];
 - Produto: Cadastrar, Editar, Excluir, Listar e Buscar por ID [X];
