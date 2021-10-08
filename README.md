@@ -52,7 +52,7 @@ Levaremos em conta os seguintes critérios:
 - Regra de Negócio: Valores de frete, subtotal e total calculados dinamicamente [X];
 - Teste Unitário [ ];
 
-###Tecnologias utilizadas no Projeto:
+### Tecnologias utilizadas no Projeto:
 - Java 11;
 - Spring Boot 2.x;
 - Maven 3+;
