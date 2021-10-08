@@ -3,15 +3,23 @@ package br.com.supera.gamestore.services;
 import br.com.supera.gamestore.dao.ProdutoDAO;
 import br.com.supera.gamestore.exceptions.ObjectNotFoundException;
 import br.com.supera.gamestore.models.Produto;
-import br.com.supera.gamestore.models.Usuario;
 import br.com.supera.gamestore.util.BigDecimalConverter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author: Deivisson Santos
+ * @version: 1.0
+ * @Email: deivissonsantos@hotmail.com
+ * @Contato: (71) 99188-8419 (WhatsApp)
+ * Classe utilizada para realizar o CRUD e regra de negócio para Produtos.
+ */
+
 @Service
 public class ProdutoService {
 
+    // Construtores Bigdecimal, Produto DAO e Injeção de depência JPA.
     private final ProdutoDAO produtoDAO;
     private final BigDecimalConverter bigDecimalConverter;
 
@@ -20,26 +28,35 @@ public class ProdutoService {
         this.bigDecimalConverter = bigDecimalConverter;
     }
 
-    //Retorna uma lista de todos os produtos cadastrados na base de dados
+    /*
+     * @return: Retorna uma lista de produtos cadastrados na base de dados.
+     */
     public List<Produto> listarTodosProdutos() {
         return (List<Produto>) produtoDAO.findAll();
     }
 
-    //Busca um produto passando por parâmetro um id.
+    /*
+     * @param: id
+     * @return: Busca um Produto na base de dados.
+     */
     public Produto buscarProdutoPorId(Long id) {
         return verificaSeExisteProduto(id);
     }
 
-    //Salva um novo Produto na base de dados
+    /*
+     * @return: Retorna a criação de um Produto na base de dados.
+     */
     public Produto criarProduto(Produto obj) {
-
         obj.setId(null);
         obj.setPreco(bigDecimalConverter.converter(obj.getPreco().toString()));
         obj = produtoDAO.save(obj);
         return obj;
     }
 
-    //Verifica se existe um produto na base de dados e atualiza suas informações
+    /*
+     * @param: id e entidade
+     * @return: Verifica se existe um produto na base de dados e atualiza suas informações
+     */
     public Produto atualizarProduto(Long id, Produto obj) {
         Produto newObj = verificaSeExisteProduto(id);
         atualizaData(newObj, obj);
@@ -53,8 +70,8 @@ public class ProdutoService {
     }
 
     /*
-    método com a responsabilidade de passar os novos dados de um
-    produto para um produto já existente na base de dados.
+     * método com a responsabilidade de passar os novos dados de um
+       produto para um produto já existente na base de dados.
      */
     private void atualizaData(Produto newObj, Produto obj) {
         newObj.setNome(obj.getNome());
@@ -64,8 +81,8 @@ public class ProdutoService {
     }
 
     /*
-    verifica existe um Produto na base de dados passando por parâmetro um id,
-    caso contrario é lançado uma excessão
+     * @param: id
+     * @return: verifica existe Produto na base de dados, caso contrario é lançado uma excessão
      */
     private Produto verificaSeExisteProduto(Long id) throws ObjectNotFoundException {
         return produtoDAO.findById(id)

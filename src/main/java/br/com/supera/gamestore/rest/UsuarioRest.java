@@ -11,6 +11,13 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author: Deivisson Santos
+ * @version: 1.0
+ * @Email: deivissonsantos@hotmail.com
+ * @Contato: (71) 99188-8419 (WhatsApp)
+ */
+
 @RestController
 @RequestMapping("/api/v1/usuarios")
 @CrossOrigin("*")

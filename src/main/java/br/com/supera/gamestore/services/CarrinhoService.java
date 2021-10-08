@@ -3,15 +3,25 @@ package br.com.supera.gamestore.services;
 import br.com.supera.gamestore.dao.CarrinhoDAO;
 import br.com.supera.gamestore.exceptions.ObjectNotFoundException;
 import br.com.supera.gamestore.models.Carrinho;
+import br.com.supera.gamestore.models.Usuario;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * @author: Deivisson Santos
+ * @version: 1.0
+ * @Email: deivissonsantos@hotmail.com
+ * @Contato: (71) 99188-8419 (WhatsApp)
+ * Classe utilizada para realizar o CRUD e regra de negócio para Carrinho.
+ */
+
 
 @Service
 public class CarrinhoService {
 
+    // Construtores e Injeção de depência JPA.
     private final CarrinhoDAO carrinhoDAO;
     private final UsuarioService usuarioService;
     private final ProdutoService produtoService;
@@ -22,25 +32,37 @@ public class CarrinhoService {
         this.produtoService = produtoService;
     }
 
-    //Busca um carrinho passando por parâmetro um id.
+    /*
+     * @param: id
+     * @return: Busca um Carrinho na base de dados.
+     */
     public Carrinho buscarCarrinhoPorId(Long carrinhoId) {
         return verificaSeExisteCarrinho(carrinhoId);
     }
 
-    // Busca todas os carrinhos
+    /*
+     * @return: Retorna uma lista de Carrinho cadastrados na base de dados.
+     */
     public List<Carrinho> listarTodosCarrinhos() {
         return carrinhoDAO.findAll();
     }
 
-    // Criar um novo Carrinho;
+    /*
+     * @return: Retorna a criação de um Carrinho na base de dados.
+     */
     public Carrinho criarCarrinho(Long id_usu, Carrinho obj) {
+        Usuario usuario = usuarioService.buscarUsuarioPorId(id_usu);
         obj.setCarrinhoId(null);
-        obj.setUsuario(usuarioService.buscarUsuarioPorId(id_usu));
+        obj.setUsuario(usuario);
+
         this.calculaCarrinho(obj);
         return carrinhoDAO.save(obj);
     }
 
-    //atualiza o carrinho, tanto incrementa como decrementa os itens.
+    /*
+     * @param: id e entidade
+     * @return: Verifica se existe um Carrinho na base de dados e atualiza suas informações
+     */
     public Carrinho atualizaCarrinho(Long id,  Carrinho obj) {
         this.verificaSeExisteCarrinho(id);
         obj.setCarrinhoId(id);
@@ -48,12 +70,15 @@ public class CarrinhoService {
         return carrinhoDAO.save(obj);
     }
 
-    //deleta todo carrinho
+    //Verifica se existe um carrinho na base de dados e deleta.
     public void deletarCarrinho(Long id) {
         this.verificaSeExisteCarrinho(id);
         carrinhoDAO.deleteById(id);
     }
 
+    /*
+    Método responsavel por realizar o calculo do carrinho
+     */
     private void calculaCarrinho(Carrinho carrinho) {
         carrinho.getItens().stream().forEach(obj -> {
 
@@ -76,9 +101,9 @@ public class CarrinhoService {
     }
 
     /*
-        verifica existe um Carrinho na base de dados passando por parâmetro um id,
-        caso contrario é lançado uma excessão
-    */
+     * @param: id
+     * @return: verifica existe Carrinho na base de dados, caso contrario é lançado uma excessão
+     */
     private Carrinho verificaSeExisteCarrinho(Long id) throws ObjectNotFoundException {
         return carrinhoDAO.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Carrinho com id: " + id + " não encontrado, Tipo: " + Carrinho.class.getName()));

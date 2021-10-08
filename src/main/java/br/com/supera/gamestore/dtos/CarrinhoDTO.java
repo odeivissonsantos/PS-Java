@@ -1,7 +1,6 @@
 package br.com.supera.gamestore.dtos;
 
 import br.com.supera.gamestore.models.Carrinho;
-import br.com.supera.gamestore.models.ItemCarrinho;
 import br.com.supera.gamestore.models.Pedido;
 import br.com.supera.gamestore.models.Usuario;
 import lombok.Data;
@@ -9,10 +8,16 @@ import lombok.RequiredArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+/**
+ * @author: Deivisson Santos
+ * @version: 1.0
+ * @Email: deivissonsantos@hotmail.com
+ * @Contato: (71) 99188-8419 (WhatsApp)
+ */
 
 @Data
 @RequiredArgsConstructor

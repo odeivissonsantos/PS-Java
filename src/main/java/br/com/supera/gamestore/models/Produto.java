@@ -1,7 +1,5 @@
 package br.com.supera.gamestore.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +9,13 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.*;
+
+/**
+ * @author: Deivisson Santos
+ * @version: 1.0
+ * @Email: deivissonsantos@hotmail.com
+ * @Contato: (71) 99188-8419 (WhatsApp)
+ */
 
 @Entity
 @Table(name = "produto")

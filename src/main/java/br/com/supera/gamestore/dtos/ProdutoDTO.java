@@ -1,12 +1,18 @@
 package br.com.supera.gamestore.dtos;
 
 import br.com.supera.gamestore.models.Produto;
-import br.com.supera.gamestore.util.BigDecimalConverter;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+
+/**
+ * @author: Deivisson Santos
+ * @version: 1.0
+ * @Email: deivissonsantos@hotmail.com
+ * @Contato: (71) 99188-8419 (WhatsApp)
+ */
 
 @RequiredArgsConstructor
 @Data

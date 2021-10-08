@@ -7,33 +7,52 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author: Deivisson Santos
+ * @version: 1.0
+ * @Email: deivissonsantos@hotmail.com
+ * @Contato: (71) 99188-8419 (WhatsApp)
+ * Classe utilizada para realizar o CRUD e regra de negócio para Usuários.
+ */
+
 @Service
 public class UsuarioService {
 
+    // Construtor e Injeção de depência JPA.
     private final UsuarioDAO usuarioDAO;
 
     public UsuarioService(UsuarioDAO usuarioDAO) {
         this.usuarioDAO = usuarioDAO;
     }
 
-    //Retorna uma lista de todos os usuarios cadastrados na base de dados
+    /*
+     * @return: Retorna uma lista de usuarios cadastrados na base de dados.
+     */
     public List<Usuario> listarTodosUsuarios() {
         return usuarioDAO.findAll();
     }
 
-    //Busca um Usuario passando por parâmetro um id.
+    /*
+     * @param: id
+     * @return: Busca um Usuario na base de dados.
+     */
     public Usuario buscarUsuarioPorId(Long id) {
         return verificaSeExisteUsuario(id);
     }
 
-    //Salva um novo usuario na base de dados
+    /*
+     * @return: Retorna a criação de um usuario na base de dados.
+     */
     public Usuario criarUsuario(Usuario obj) {
         obj.setId(null);
         obj = usuarioDAO.save(obj);
         return obj;
     }
 
-    //Verifica se existe um usuario na base de dados e atualiza suas informações
+    /*
+     * @param: id e entidade
+     * @return: Verifica se existe um usuario na base de dados e atualiza suas informações
+     */
     public Usuario atualizarUsuario(Long id, Usuario obj) {
         Usuario newObj = verificaSeExisteUsuario(id);
         atualizaData(newObj, obj);
@@ -47,8 +66,8 @@ public class UsuarioService {
     }
 
     /*
-    método com a responsabilidade de passar os novos dados de um
-    usuario para um usuario já existente na base de dados.
+     * método com a responsabilidade em passar os novos dados de um
+       usuário para um já existente na base de dados.
      */
     private void atualizaData(Usuario newObj, Usuario obj) {
         newObj.setNomeCompleto(obj.getNomeCompleto());
@@ -58,16 +77,12 @@ public class UsuarioService {
     }
 
     /*
-    verifica existe Usuario na base de dados passando por parâmetro um id,
-    caso contrario é lançado uma excessão
+     * @param: id
+     * @return: verifica existe Usuario na base de dados, caso contrario é lançado uma excessão
      */
     private Usuario verificaSeExisteUsuario(Long id) throws ObjectNotFoundException {
         return usuarioDAO.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Usuario com id: "+ id +" não encontrado, Tipo: " + Usuario.class.getName()));
     }
-
-
-
-
 
 }

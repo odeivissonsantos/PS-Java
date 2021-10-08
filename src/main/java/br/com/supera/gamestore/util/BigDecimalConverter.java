@@ -5,6 +5,13 @@ import org.springframework.stereotype.Component;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ * @author: Deivisson Santos
+ * @version: 1.0
+ * @Email: deivissonsantos@hotmail.com
+ * @Contato: (71) 99188-8419 (WhatsApp)
+ */
+
 @Component
 public class BigDecimalConverter implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -14,9 +21,7 @@ public class BigDecimalConverter implements Serializable {
         if(value == null) {
             return null;
         }
-        //value = value.replace(".", "");
-        //value = value.replace(",", ".");
-        //value = value.trim();
-        return new BigDecimal(value.replace(",", "."));
+        value = value.replace(".", "").replace(",", ".").trim();
+        return new BigDecimal(value);
     }
 }
