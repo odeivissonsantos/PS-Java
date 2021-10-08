@@ -81,6 +81,8 @@ normalmente usando o comando cd PS-Java.
   ```sh
   ./mvnw install
   ```
+
+A outra forma é usando um maven externo do projeto ou fornecido pela sua IDE.
   
 ### Acessando a API
 Como documentação esta API expõe o swagger, você poderá ver quais endpoints estão disponíveis e testar a api sem depender do frontend.
