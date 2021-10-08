@@ -45,7 +45,6 @@ Levaremos em conta os seguintes critérios:
 - Usuário: Cadastrar, Editar, Excluir, Listar e Buscar por ID [X];
 - Produto: Cadastrar, Editar, Excluir, Listar e Buscar por ID [X];
 - Ordenação de produtos por: Preço, Pontuação e Ordem Alfabética [X];
-- Cadastrar, Editar, Excluir e Listar Funcionário [X];
 - Regra de Negócio: À cada produto incluso no carrinho, soma-se 10,00 de frete [X];
 - Regra de Negócio: Quando a compra for igual ou maior que R$250,00 o frete é gratis [X]
 - Regra de Negócio: Adição e remoção de produtos do carrinho [X];
