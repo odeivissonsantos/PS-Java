@@ -7,6 +7,7 @@ import br.com.supera.gamestore.models.Usuario;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,9 @@ import java.util.stream.Collectors;
 
 @Data
 @RequiredArgsConstructor
-public class CarrinhoDTO {
+public class CarrinhoDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Long id;
     private BigDecimal frete = BigDecimal.ZERO;
@@ -23,7 +26,7 @@ public class CarrinhoDTO {
     private BigDecimal total = BigDecimal.ZERO;
     private Usuario usuario;
     private Pedido pedido;
-    private List<ItemCarrinho> itens = new ArrayList<>();
+    private List<ItemCarrinhoDTO> itens;
 
     public CarrinhoDTO(Carrinho obj) {
         this.id = obj.getCarrinhoId();
@@ -32,7 +35,7 @@ public class CarrinhoDTO {
         this.total = obj.getTotal();
         this.usuario = obj.getUsuario();
         this.pedido = obj.getPedido();
-        this.itens = obj.getItens();
+        this.itens = obj.getItens().stream().map(item -> Objects.nonNull(item.getItemCarrinhoId()) ? new ItemCarrinhoDTO(item) : null).collect(Collectors.toList());
     }
 
 }

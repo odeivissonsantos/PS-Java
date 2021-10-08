@@ -28,5 +28,8 @@ public class ItemCarrinho implements Serializable {
     @JsonIgnore
     private Produto produto;
 
+    @Column
+    private BigDecimal precoUnitario;
+
 
 }

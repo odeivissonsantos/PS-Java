@@ -6,9 +6,12 @@ import br.com.supera.gamestore.dtos.UsuarioDTO;
 import br.com.supera.gamestore.models.Carrinho;
 import br.com.supera.gamestore.models.Usuario;
 import br.com.supera.gamestore.services.CarrinhoService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,5 +37,25 @@ public class CarrinhoRest {
     public ResponseEntity<Carrinho> buscarCarrinhoPorId(@PathVariable Long id){
         Carrinho obj = carrinhoService.buscarCarrinhoPorId(id);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @PostMapping
+    public ResponseEntity<Carrinho> criarProduto(@Param("usuario") Long id_usu,
+                                                @RequestBody Carrinho obj) {
+        Carrinho newObj= carrinhoService.criarCarrinho(id_usu, obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/carrinhos/{id}").buildAndExpand(newObj.getCarrinhoId()).toUri();
+        return ResponseEntity.created(uri).body(newObj);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarProduto(@PathVariable Long id) {
+        carrinhoService.deletarCarrinho(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Carrinho> atualizarCarrinho(@PathVariable Long id, @RequestBody Carrinho obj) {
+        Carrinho newObj = carrinhoService.atualizaCarrinho(id, obj);
+        return ResponseEntity.ok().body(newObj);
     }
 }

@@ -63,7 +63,7 @@ public class UsuarioService {
      */
     private Usuario verificaSeExisteUsuario(Long id) throws ObjectNotFoundException {
         return usuarioDAO.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException("Usuario com "+ id +" não encontrado, Tipo: " + Usuario.class.getName()));
+                .orElseThrow(() -> new ObjectNotFoundException("Usuario com id: "+ id +" não encontrado, Tipo: " + Usuario.class.getName()));
     }
 
 
