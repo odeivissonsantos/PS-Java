@@ -7,19 +7,14 @@ import br.com.supera.gamestore.models.Carrinho;
 import br.com.supera.gamestore.models.Produto;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class CarrinhoService {
 
     private final CarrinhoDAO carrinhoDAO;
-    private final ProdutoService produtoService;
-    private final UsuarioService usuarioService;
-    private final ItemCarrinhoDAO itemCarrinhoDAO;
 
-    public CarrinhoService(CarrinhoDAO carrinhoDAO, ProdutoService produtoService, UsuarioService usuarioService, ItemCarrinhoDAO itemCarrinhoDAO) {
+    public CarrinhoService(CarrinhoDAO carrinhoDAO) {
         this.carrinhoDAO = carrinhoDAO;
-        this.produtoService = produtoService;
-        this.usuarioService = usuarioService;
-        this.itemCarrinhoDAO = itemCarrinhoDAO;
     }
 
     //Busca um carrinho passando por parâmetro um id.

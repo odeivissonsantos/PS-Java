@@ -15,19 +15,9 @@ import java.util.List;
 public class PedidoService {
 
     private final PedidoDAO pedidoDAO;
-    private final ProdutoService produtoService;
-    private final CarrinhoDAO itemCarrinhoDAO;
-    private final UsuarioService usuarioService;
 
-
-    public PedidoService(PedidoDAO pedidoDAO,
-                         ProdutoService produtoService,
-                         CarrinhoDAO itemCarrinhoDAO,
-                         UsuarioService usuarioService) {
+    public PedidoService(PedidoDAO pedidoDAO) {
         this.pedidoDAO = pedidoDAO;
-        this.produtoService = produtoService;
-        this.itemCarrinhoDAO = itemCarrinhoDAO;
-        this.usuarioService = usuarioService;
     }
 
     public List<Pedido> listarTodosPedidos() {

@@ -28,8 +28,5 @@ public class ItemCarrinho implements Serializable {
     @JsonIgnore
     private Produto produto;
 
-    private BigDecimal valorTotal;
-
-    private Integer quantidade;
 
 }
