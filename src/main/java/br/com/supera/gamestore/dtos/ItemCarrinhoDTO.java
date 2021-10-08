@@ -12,6 +12,7 @@ import java.math.BigDecimal;
  * @version: 1.0
  * @Email: deivissonsantos@hotmail.com
  * @Contato: (71) 99188-8419 (WhatsApp)
+ * Classe responsável por passar os dados que serão mostrados no front-end.
  */
 
 @Data

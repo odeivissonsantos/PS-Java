@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
  * @version: 1.0
  * @Email: deivissonsantos@hotmail.com
  * @Contato: (71) 99188-8419 (WhatsApp)
+ * Classe responsável por gerar os end points, protocolo http e resposta do status da requisição
  */
 
 @RestController

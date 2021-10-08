@@ -5,6 +5,7 @@ package br.com.supera.gamestore.exceptions;
  * @version: 1.0
  * @Email: deivissonsantos@hotmail.com
  * @Contato: (71) 99188-8419 (WhatsApp)
+ * Classe responsável por lançar a excessão caso não seja encontrado alguma classe por id.
  */
 
 public class ObjectNotFoundException extends RuntimeException {

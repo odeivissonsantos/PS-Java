@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
  * @version: 1.0
  * @Email: deivissonsantos@hotmail.com
  * @Contato: (71) 99188-8419 (WhatsApp)
+ * Classe responsável por passar todos os métodos JPA para os services.
  */
 
 @Repository
