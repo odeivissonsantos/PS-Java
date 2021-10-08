@@ -30,7 +30,6 @@ public class CarrinhoDTO implements Serializable {
     private BigDecimal frete = BigDecimal.ZERO;
     private BigDecimal subtotal = BigDecimal.ZERO;
     private BigDecimal total = BigDecimal.ZERO;
-    private Usuario usuario;
     private Pedido pedido;
     private List<ItemCarrinhoDTO> itens;
 
@@ -39,7 +38,6 @@ public class CarrinhoDTO implements Serializable {
         this.frete = obj.getFrete();
         this.subtotal = obj.getSubTotal();
         this.total = obj.getTotal();
-        this.usuario = obj.getUsuario();
         this.pedido = obj.getPedido();
         this.itens = obj.getItens().stream().map(item -> Objects.nonNull(item.getItemCarrinhoId()) ? new ItemCarrinhoDTO(item) : null).collect(Collectors.toList());
     }

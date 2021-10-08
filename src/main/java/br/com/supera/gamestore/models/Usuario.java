@@ -41,8 +41,4 @@ public class Usuario implements Serializable {
     @Column(name = "telefone")
     private String telefone;
 
-    @JsonIgnore
-    @JsonManagedReference
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Carrinho> carrinho;
 }

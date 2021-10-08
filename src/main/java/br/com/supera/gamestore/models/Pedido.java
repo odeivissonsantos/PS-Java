@@ -37,6 +37,4 @@ public class Pedido implements Serializable {
     @JsonIgnore
     private Carrinho carrinho;
 
-    private BigDecimal frete;
-
 }

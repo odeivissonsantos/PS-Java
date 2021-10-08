@@ -33,10 +33,6 @@ public class Carrinho implements Serializable {
     @OneToMany(mappedBy = "carrinho", cascade = CascadeType.REMOVE)
     private List<ItemCarrinho> itens;
 
-    @ManyToOne
-    @JsonIgnore
-    private Usuario usuario;
-
     @Column(name = "sub_total")
     private BigDecimal subTotal;
 
