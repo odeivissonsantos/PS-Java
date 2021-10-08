@@ -1,9 +1,10 @@
 package br.com.supera.gamestore.services;
 
 import br.com.supera.gamestore.dao.CarrinhoDAO;
+import br.com.supera.gamestore.dao.ItemCarrinhoDAO;
 import br.com.supera.gamestore.exceptions.ObjectNotFoundException;
 import br.com.supera.gamestore.models.Carrinho;
-import br.com.supera.gamestore.models.Usuario;
+import br.com.supera.gamestore.models.ItemCarrinho;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -23,13 +24,13 @@ public class CarrinhoService {
 
     // Construtores e Injeção de depência JPA.
     private final CarrinhoDAO carrinhoDAO;
-    private final UsuarioService usuarioService;
     private final ProdutoService produtoService;
+    private final ItemCarrinhoDAO itemCarrinhoDAO;
 
-    public CarrinhoService(CarrinhoDAO carrinhoDAO, UsuarioService usuarioService, ProdutoService produtoService) {
+    public CarrinhoService(CarrinhoDAO carrinhoDAO, ProdutoService produtoService, ItemCarrinhoDAO itemCarrinhoDAO) {
         this.carrinhoDAO = carrinhoDAO;
-        this.usuarioService = usuarioService;
         this.produtoService = produtoService;
+        this.itemCarrinhoDAO = itemCarrinhoDAO;
     }
 
     /*
@@ -50,13 +51,19 @@ public class CarrinhoService {
     /*
      * @return: Retorna a criação de um Carrinho na base de dados.
      */
-    public Carrinho criarCarrinho(Long id_usu, Carrinho obj) {
-        Usuario usuario = usuarioService.buscarUsuarioPorId(id_usu);
+    public Carrinho criarCarrinho(Carrinho obj) {
         obj.setCarrinhoId(null);
-        obj.setUsuario(usuario);
+        obj = carrinhoDAO.save(obj);
+
+        for (ItemCarrinho ic : obj.getItens()) {
+            ic.setProduto(produtoService.buscarProdutoPorId(ic.getProduto().getId()));
+            ic.setPrecoUnitario(ic.getProduto().getPreco());
+            ic.setCarrinho(obj);
+        }
+        itemCarrinhoDAO.saveAll(obj.getItens());
 
         this.calculaCarrinho(obj);
-        return carrinhoDAO.save(obj);
+        return obj;
     }
 
     /*
