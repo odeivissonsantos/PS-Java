@@ -55,6 +55,7 @@ public class CarrinhoService {
         obj.setCarrinhoId(null);
         obj = carrinhoDAO.save(obj);
 
+        //Percorre o array de itens busca os preços e os id's dos produtos
         for (ItemCarrinho ic : obj.getItens()) {
             ic.setProduto(produtoService.buscarProdutoPorId(ic.getProduto().getId()));
             ic.setPrecoUnitario(ic.getProduto().getPreco());
@@ -68,7 +69,8 @@ public class CarrinhoService {
 
     /*
      * @param: id e entidade
-     * @return: Verifica se existe um Carrinho na base de dados e atualiza suas informações
+     * @return: Verifica se existe um Carrinho na base de dados,
+                acrescenta ou decrementa itens do carrinho
      */
     public Carrinho atualizaCarrinho(Long id,  Carrinho obj) {
         this.verificaSeExisteCarrinho(id);

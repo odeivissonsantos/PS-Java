@@ -1,0 +1,47 @@
+produto: 
+  - id: 1 
+    nome: "Super Mario Odyssey"
+    preco: 197.88
+    pontuacao: 100
+    imagem: "super-mario-odyssey.png"
+  - id: 2
+    nome: "Call Of Duty Infinite Warfare"
+    preco: 49.99
+    pontuacao: 80
+    imagem: "call-of-duty-infinite-warfare.png"
+  - id: 3
+    nome: "The Witcher III Wild Hunt"
+    preco: 119.5
+    pontuacao: 250
+    imagem: "the-witcher-iii-wild-hunt.png"
+  - id:  4
+    nome: "Call Of Duty WWII"
+    preco: 249.99
+    pontuacao: 205
+    imagem: "call-of-duty-wwii.png"
+  - id: 5
+    nome: "Mortal Kombat XL"
+    preco: 69.99
+    pontuacao: 150
+    imagem: "mortal-kombat-xl.png"
+  - id: 6
+    nome: "Shards of Darkness"
+    preco: 71.94
+    pontuacao: 400
+    imagem: "shards-of-darkness.png"
+  - id: 7
+    nomem: "Terra Média: Sombras de Mordor"
+    preco: 79.99
+    pontuacao: 50
+    imagem: "terra-media-sombras-de-mordor.png"
+  - id: 8
+    nome: "FIFA 18"
+    preco: 195.39
+    pontuacao: 325
+    imagem: "fifa-18.png"
+  - id: 9
+    nome: "Horizon Zero Dawn"
+    preco: 115.8
+    pontuacao: 290
+    imagem: "horizon-zero-dawn.png"
+  

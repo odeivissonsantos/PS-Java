@@ -1,8 +1,6 @@
 package br.com.supera.gamestore.dtos;
 
 import br.com.supera.gamestore.models.Carrinho;
-import br.com.supera.gamestore.models.Pedido;
-import br.com.supera.gamestore.models.Usuario;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -30,7 +28,6 @@ public class CarrinhoDTO implements Serializable {
     private BigDecimal frete = BigDecimal.ZERO;
     private BigDecimal subtotal = BigDecimal.ZERO;
     private BigDecimal total = BigDecimal.ZERO;
-    private Pedido pedido;
     private List<ItemCarrinhoDTO> itens;
 
     public CarrinhoDTO(Carrinho obj) {
@@ -38,7 +35,6 @@ public class CarrinhoDTO implements Serializable {
         this.frete = obj.getFrete();
         this.subtotal = obj.getSubTotal();
         this.total = obj.getTotal();
-        this.pedido = obj.getPedido();
         this.itens = obj.getItens().stream().map(item -> Objects.nonNull(item.getItemCarrinhoId()) ? new ItemCarrinhoDTO(item) : null).collect(Collectors.toList());
     }
 

@@ -42,8 +42,4 @@ public class Carrinho implements Serializable {
     @Column(name = "frete")
     private BigDecimal frete;
 
-    @OneToOne
-    @JsonIgnore
-    private Pedido pedido;
-
 }
