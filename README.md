@@ -81,12 +81,16 @@ normalmente usando o comando cd PS-Java.
   
 ### Acessando a API
 Como documentação esta API expõe o swagger, você poderá ver quais endpoints estão disponíveis e testar a api sem depender do frontend.
-
+  ```sh
 http://localhost:8080/swagger-ui.html
+  ```
 
 ### Acessando o H2 DataBase:
-Você pode verificar todo Schema do banco de dados através da url: http://localhost:8080/h2-console.
-
+Você pode verificar todo Schema do banco de dados através da url: 
+  ```sh
+http://localhost:8080/h2-console.
+  ```
+  
 JDBC URL: jdbc:h2:mem:db_gamestore
 
 USER NAME: sa
@@ -124,7 +128,7 @@ Password: password
   ./mvnw clean test
   ```
 
-### SOBRE O AUTOR/ORGANIZADOR
+### Sobre o Autor/Organizador: 
 - Deivisson da Silva Santos;
 - Email: deivissonsantos@hotmail.com;
 - Dúvidas, criticas ou sugestões? Vamos discutir. 
