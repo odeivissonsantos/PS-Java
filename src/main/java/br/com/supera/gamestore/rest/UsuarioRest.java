@@ -52,7 +52,7 @@ public class UsuarioRest {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> atualizarUsuario(@PathVariable Long id, @RequestBody Usuario obj){
+    public ResponseEntity<Usuario> atualizarUsuario(@PathVariable Long id, @Valid @RequestBody Usuario obj){
         Usuario newObj = usuarioService.atualizarUsuario(id, obj);
         return ResponseEntity.ok().body(newObj);
     }
