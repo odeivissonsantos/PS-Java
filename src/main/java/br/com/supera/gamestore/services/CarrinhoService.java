@@ -26,11 +26,13 @@ public class CarrinhoService {
     private final CarrinhoDAO carrinhoDAO;
     private final ProdutoService produtoService;
     private final ItemCarrinhoDAO itemCarrinhoDAO;
+    private final UsuarioService usuarioService;
 
-    public CarrinhoService(CarrinhoDAO carrinhoDAO, ProdutoService produtoService, ItemCarrinhoDAO itemCarrinhoDAO) {
+    public CarrinhoService(CarrinhoDAO carrinhoDAO, ProdutoService produtoService, ItemCarrinhoDAO itemCarrinhoDAO, UsuarioService usuarioService) {
         this.carrinhoDAO = carrinhoDAO;
         this.produtoService = produtoService;
         this.itemCarrinhoDAO = itemCarrinhoDAO;
+        this.usuarioService = usuarioService;
     }
 
     /*
@@ -53,6 +55,7 @@ public class CarrinhoService {
      */
     public Carrinho criarCarrinho(Carrinho obj) {
         obj.setCarrinhoId(null);
+        obj.setUsuario(usuarioService.buscarUsuarioPorId(obj.getUsuario().getId()));
         obj = carrinhoDAO.save(obj);
 
         //Percorre o array de itens busca os preços e os id's dos produtos
