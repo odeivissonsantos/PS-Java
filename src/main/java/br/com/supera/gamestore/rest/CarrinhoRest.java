@@ -48,8 +48,7 @@ public class CarrinhoRest {
     @PostMapping
     public ResponseEntity<Carrinho> criarCarrinho(@RequestBody Carrinho obj) {
         Carrinho newObj = carrinhoService.criarCarrinho(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/carrinhos/{id}").buildAndExpand(newObj.getCarrinhoId()).toUri();
-        return ResponseEntity.created(uri).body(newObj);
+        return ResponseEntity.created(null).body(newObj);
     }
 
     @DeleteMapping("/{id}")

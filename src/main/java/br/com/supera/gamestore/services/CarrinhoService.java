@@ -57,18 +57,8 @@ public class CarrinhoService {
     public Carrinho criarCarrinho(Carrinho obj) {
         obj.setCarrinhoId(null);
         obj.setUsuario(usuarioService.buscarUsuarioPorId(obj.getUsuario().getId()));
-
+        this.calculaCarrinho(obj);
         obj = carrinhoDAO.save(obj);
-
-        //Percorre o array de itens busca os preços e os id's dos produtos
-        for (ItemCarrinho ic : obj.getItens()) {
-            ic.setProduto(produtoService.buscarProdutoPorId(ic.getProduto().getId()));
-            ic.setPrecoUnitario(ic.getProduto().getPreco());
-            ic.setCarrinho(obj);
-        }
-        itemCarrinhoDAO.saveAll(obj.getItens());
-
-        //this.calculaCarrinho(obj);
         return obj;
     }
 

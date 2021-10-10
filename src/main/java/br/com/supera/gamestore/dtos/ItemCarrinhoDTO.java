@@ -1,5 +1,6 @@
 package br.com.supera.gamestore.dtos;
 
+import br.com.supera.gamestore.models.Carrinho;
 import br.com.supera.gamestore.models.ItemCarrinho;
 import br.com.supera.gamestore.models.Produto;
 import lombok.Data;
@@ -23,12 +24,14 @@ public class ItemCarrinhoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private BigDecimal preco; // valor atual do produto
+    private BigDecimal precoUnitario; // valor atual do produto
     private Produto produto;
+    private Carrinho carrinho;
 
     public ItemCarrinhoDTO(ItemCarrinho obj) {
         this.id = obj.getItemCarrinhoId();
-        this.preco = obj.getPrecoUnitario();
+        this.precoUnitario = obj.getPrecoUnitario();
         this.produto = obj.getProduto();
+        this.carrinho = obj.getCarrinho();
     }
 }

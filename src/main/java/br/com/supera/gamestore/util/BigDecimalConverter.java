@@ -21,7 +21,7 @@ public class BigDecimalConverter implements Serializable {
         if(value == null) {
             return null;
         }
-        value = value.replace(".", "").replace(",", ".").trim();
+        value = value.replace(",", ".");
         return new BigDecimal(value);
     }
 }
