@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author: Deivisson Santos
@@ -30,31 +31,24 @@ public class Produto implements Serializable {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
+   @NotNull(message = "Campo NOME é Obrigatório!")
    @Column(name = "nome", unique = true)
    private String nome;
 
+   @NotNull(message = "Campo PREÇO é Obrigatório!")
    @Column(name = "preco")
    private BigDecimal preco;
 
+   @NotNull(message = "Campo PONTUAÇÃO é Obrigatório!")
    @Column(name = "pontuacao")
    private Integer pontuacao;
 
+   @NotNull(message = "Campo URL DA IMAGEM é Obrigatório!")
    @Column(name = "imagem")
    private String urlImagem;
 
    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
    @JsonIgnore
-   private List<ItemCarrinho> itemCarrinho;
+   private List<ItemCarrinho> itens;
 
-   @Override
-   public String toString() {
-      return "Produto{" +
-              "id=" + id +
-              ", nome='" + nome + '\'' +
-              ", preco=" + preco +
-              ", pontuacao=" + pontuacao +
-              ", urlImagem='" + urlImagem + '\'' +
-              ", itemCarrinho=" + itemCarrinho +
-              '}';
-   }
 }

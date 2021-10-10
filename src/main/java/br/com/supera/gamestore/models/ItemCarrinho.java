@@ -39,5 +39,4 @@ public class ItemCarrinho implements Serializable {
     @Column
     private BigDecimal precoUnitario;
 
-
 }
