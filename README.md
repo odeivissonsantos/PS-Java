@@ -53,7 +53,9 @@ só que, eu só fiz um microsserviço até o momento com o Quarkus e na minha st
 - Regra de Negócio: Quando a compra for igual ou maior que R$250,00 o frete é gratis [X]
 - Regra de Negócio: Adição e remoção de produtos do carrinho [X];
 - Regra de Negócio: Valores de frete, subtotal e total calculados dinamicamente [X];
-- Teste Unitário [ ];
+- Teste Unitário Produtos [X];
+- Teste Unitário Usuários [X];
+- Teste Unitário Carrinho de compras [ ];
 
 ### Tecnologias utilizadas no Projeto:
 - Java 11;
