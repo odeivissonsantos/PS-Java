@@ -104,6 +104,22 @@ public class ProdutoServiceTeste {
         assertEquals(produto.getPontuacao(), response.getPontuacao());
         assertEquals(produto.getUrlImagem(), response.getUrlImagem());
     }
+    
+    @Test
+    void updateWithObjectNotFoundErrorTest() {
+        try {
+            produtoService.atualizarProduto(Long.valueOf(ID), produto);
+        } catch (Exception ex) {
+            assertEquals(ObjectNotFoundException.class, ex.getClass());
+            assertEquals("Produto com "+ ID +" não encontrado, Tipo: " + Produto.class.getName(), ex.getMessage());
+        }
+    }
+
+    @Test
+    void deleteByIdSuccessTest() {
+        doNothing().when(produtoDAO).deleteById(Long.valueOf(anyInt()));
+        produtoService.deletarProduto(Long.valueOf(ID));
+    }
 
 
     private void iniciaOptionalProduto() {
@@ -133,22 +149,6 @@ public class ProdutoServiceTeste {
         produtoDTO.setPreco(String.valueOf(PRECO));
         produtoDTO.setPontuacao(PONTUACAO);
         produtoDTO.setUrlImagem(URLIMAGEM);
-    }
-
-    @Test
-    void updateWithObjectNotFoundErrorTest() {
-        try {
-            produtoService.atualizarProduto(Long.valueOf(ID), produto);
-        } catch (Exception ex) {
-            assertEquals(ObjectNotFoundException.class, ex.getClass());
-            assertEquals("Produto com "+ ID +" não encontrado, Tipo: " + Produto.class.getName(), ex.getMessage());
-        }
-    }
-
-    @Test
-    void deleteByIdSuccessTest() {
-        doNothing().when(produtoDAO).deleteById(Long.valueOf(anyInt()));
-       produtoService.deletarProduto(Long.valueOf(ID));
     }
 
 }
