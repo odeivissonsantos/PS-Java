@@ -3,6 +3,9 @@ package br.com.supera.gamestore.rest;
 import br.com.supera.gamestore.dtos.ProdutoDTO;
 import br.com.supera.gamestore.models.Produto;
 import br.com.supera.gamestore.services.ProdutoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -30,6 +33,10 @@ public class ProdutoRest {
         this.produtoService = produtoService;
     }
 
+    @Operation(description = "Lista todos os produtos cadastrados na base de dados")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Lista com todos produtos")
+    })
     @GetMapping
     public ResponseEntity<List<ProdutoDTO>> listarTodosProdutos() {
         List<Produto> list = produtoService.listarTodosProdutos();
@@ -37,12 +44,20 @@ public class ProdutoRest {
         return ResponseEntity.ok().body(listDTO);
     }
 
+    @Operation(description = "Retorna um produto por ID")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Lista os detalhes de um produto por ID")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Produto> buscarProdutoPorId(@PathVariable Long id) {
         Produto obj = produtoService.buscarProdutoPorId(id);
         return ResponseEntity.ok().body(obj);
     }
 
+    @Operation(description = "Insere um novo produto na base de dados")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Cria um novo produto")
+    })
     @PostMapping
     public ResponseEntity<Produto> criarProduto(@RequestBody Produto obj) {
         Produto newObj = produtoService.criarProduto(obj);
@@ -50,12 +65,20 @@ public class ProdutoRest {
         return ResponseEntity.created(uri).body(newObj);
     }
 
+    @Operation(description = "Atualiza um produto")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Atualiza um produto cadastrado base de dados")
+    })
     @PutMapping("/{id}")
     public ResponseEntity<Produto> atualizarProduto(@PathVariable Long id, @RequestBody Produto obj){
         Produto newObj = produtoService.atualizarProduto(id, obj);
         return ResponseEntity.ok().body(newObj);
     }
 
+    @Operation(description = "Exclui um produto")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "204", description = "Exclui um produto passando uum id")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarProduto(@PathVariable Long id){
         produtoService.deletarProduto(id);
