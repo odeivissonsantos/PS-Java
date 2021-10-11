@@ -104,7 +104,7 @@ public class ProdutoServiceTeste {
         assertEquals(produto.getPontuacao(), response.getPontuacao());
         assertEquals(produto.getUrlImagem(), response.getUrlImagem());
     }
-    
+
     @Test
     void updateWithObjectNotFoundErrorTest() {
         try {
